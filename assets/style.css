@@ -1,0 +1,295 @@
+/*
+  Aurelius Advisory Group – Shared Stylesheet
+  This stylesheet defines a cohesive colour palette and layout rules for all pages in the Aurelius multi‑page site.  
+  The design draws inspiration from premium consulting websites: elegant serif headings, clean sans text, generous spacing and muted tones punctuated by a refined gold accent.  
+*/
+
+/* Colour palette variables to ensure consistency across the site. */
+:root {
+    --dark-bg: #0F172A;          /* Deep navy used for hero sections and footer */
+    --gradient-start: #0F172A;   /* Gradient start for hero */
+    --gradient-end: #162A44;     /* Gradient end for hero */
+    --light-bg: #F8F9FA;        /* Warm light grey for main backgrounds */
+    --accent-bg: #ECEFF4;       /* Slightly darker light grey for alternating sections */
+    --primary-colour: #C6A75E;  /* Muted gold accent used for highlights, links and buttons */
+    --secondary-colour: #A89154;/* Secondary gold tone used on hover states */
+    --heading-colour-dark: #E5E7EB;   /* Light text on dark backgrounds */
+    --heading-colour-light: #27364C;  /* Dark text on light backgrounds */
+    --body-font: 'Inter', sans-serif;
+    --heading-font: 'Playfair Display', serif;
+}
+
+/* Base reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--light-bg);
+    color: var(--heading-colour-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    color: var(--primary-colour);
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+h2::after, h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.35rem;
+    width: 60px;
+    height: 2px;
+    background-color: var(--primary-colour);
+}
+p {
+    margin-bottom: 1rem;
+    max-width: 70ch;
+}
+
+/* Layout helpers */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+.section {
+    padding: 4rem 0;
+}
+.section.light {
+    background-color: var(--light-bg);
+    color: var(--heading-colour-light);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.section.accent {
+    background-color: var(--accent-bg);
+    color: var(--heading-colour-light);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.section.dark {
+    background-color: var(--dark-bg);
+    color: var(--heading-colour-dark);
+}
+
+/* Call‑to‑action section custom styles */
+.section.cta {
+    /* Use a dark background to create strong contrast */
+    background-color: var(--dark-bg);
+    color: var(--heading-colour-dark);
+    text-align: center;
+    border-bottom: none;
+}
+/* Remove decorative underline on headings inside CTA */
+.section.cta h2::after {
+    display: none;
+}
+
+/* Navigation bar */
+header {
+    background: linear-gradient(120deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    color: var(--heading-colour-dark);
+    padding: 1.5rem 0;
+    position: relative;
+    z-index: 10;
+}
+header .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+/* Logo container styles: the logotype uses Playfair and gold colour. */
+header .logo-container img {
+    height: 40px;
+    width: auto;
+    margin-right: 0.5rem;
+}
+header .logo-container .logotype {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-colour);
+}
+
+nav.navigation {
+    margin-left: auto;
+}
+nav.navigation ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+nav.navigation a {
+    text-decoration: none;
+    color: var(--primary-colour);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+nav.navigation a:hover {
+    color: var(--secondary-colour);
+}
+
+/* Hero section */
+.hero {
+    background: linear-gradient(120deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+    padding: 6rem 0 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+/* Optional overlay icon on hero; hidden by default. If you supply a custom icon, set display:block. */
+.hero .overlay-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.05;
+    pointer-events: none;
+    display: none;
+}
+.hero h1 {
+    font-size: 2.6rem;
+    color: var(--primary-colour);
+    margin-bottom: 1rem;
+}
+.hero p.lead {
+    font-size: 1.2rem;
+    color: var(--secondary-colour);
+    max-width: 50ch;
+    margin: 0 auto;
+}
+.hero .cta-btn {
+    margin-top: 2rem;
+}
+
+/* Button styling */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.btn-primary {
+    background-color: var(--primary-colour);
+    color: var(--dark-bg);
+}
+.btn-primary:hover {
+    background-color: var(--secondary-colour);
+    color: var(--dark-bg);
+}
+
+/* Services grid */
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+.service-card {
+    flex: 1;
+    min-width: 280px;
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+    padding: 2rem 1.5rem;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+.service-card.dark {
+    background-color: rgba(255,255,255,0.08);
+    color: var(--heading-colour-dark);
+}
+.service-card:hover {
+    transform: translateY(-6px);
+}
+.service-card .icon {
+    margin-bottom: 1rem;
+    color: var(--primary-colour);
+}
+.service-card svg {
+    width: 40px;
+    height: 40px;
+}
+.service-card h3 {
+    color: var(--primary-colour);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Contact form */
+.contact-section {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.contact-section label {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--primary-colour);
+}
+.contact-section input,
+.contact-section textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.04);
+    color: var(--heading-colour-light);
+    font-size: 0.9rem;
+}
+.dark .contact-section input,
+.dark .contact-section textarea {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: var(--heading-colour-dark);
+}
+.contact-section textarea {
+    height: 140px;
+    resize: vertical;
+}
+.contact-section button {
+    padding: 0.8rem 1.6rem;
+    background-color: var(--primary-colour);
+    color: var(--dark-bg);
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.contact-section button:hover {
+    background-color: var(--secondary-colour);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-bg);
+    color: var(--heading-colour-dark);
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    nav.navigation ul {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .hero p.lead {
+        font-size: 1rem;
+    }
+}
